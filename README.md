@@ -44,6 +44,24 @@ PaperBanana supports configuring API keys from a YAML configuration file or via 
 
 We recommend duplicate the `configs/model_config.template.yaml` file into `configs/model_config.yaml` to externalize all user configurations. This file is ignored by git to keep your api keys and configurations secret. In `model_config.yaml`, remember to fill in the two model names (`defaults.model_name` and `defaults.image_model_name`) and set at least one API key under `api_keys` (e.g. `google_api_key` for Gemini models).
 
+The default `model_config.yaml` should look like this:
+```yaml
+# Model and API Configuration for PaperBanana
+
+# Default Models
+defaults:
+  model_name: "gemini-3-pro-preview"
+  image_model_name: "gemini-3-pro-image-preview"
+
+# API Keys
+# Leave blank to use environment variables instead:
+# GOOGLE_API_KEY, OPENAI_API_KEY, ANTHROPIC_API_KEY
+api_keys:
+  google_api_key: ""
+  openai_api_key: ""
+  anthropic_api_key: ""
+```
+
 Note that if you need to generate many candidates simultaneously, you will require an API key that supports high concurrency.
 
 ### Step3: Downloading the Dataset
@@ -244,4 +262,3 @@ If you find this repo helpful, please cite our paper as follows:
 This is not an officially supported Google product. This project is not eligible for the [Google Open Source Software Vulnerability Rewards Program](https://bughunters.google.com/open-source-security).
 
 Our goal is simply to benefit the community, so currently we have no plans to use it for commercial purposes. The core methodology was developed during my internship at Google, and patents have been filed for these specific workflows by Google. While this doesn't impact open-source research efforts, it restricts third-party commercial applications using similar logic.
-
